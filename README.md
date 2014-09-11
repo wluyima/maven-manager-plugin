@@ -1,7 +1,7 @@
 maven-manager-plugin
 ====================
 
-The plugin can be used to run and stop an instance of the OpenMRS standalone
+This plugin can be used to run and stop an instance of the OpenMRS standalone
 
 ###Building the plugin
  * Check out the project onto your machine 
@@ -13,14 +13,13 @@ The plugin can be used to run and stop an instance of the OpenMRS standalone
 
 
 ###Running the plugin
-* On the commandline, navigate to the root of your maven project
-* Run this command below: 
+* Run the command below from the root of your maven project
   
   ```
   mvn manager:run -DpathToStandalone=/myPathToTheStandalone
   ```
 
-If maven complains that it can't find the plugin, make sure that you have **org.openmrs.maven.plugins** added to your pluginGroups in the settings.xml file, If you have no pluginGroups added, you can add the text below to your settings.xml file
+If maven complains that it can't find the plugin, make sure that you have an entry for **org.openmrs.maven.plugins** under  pluginGroups in your maven settings.xml file, If you have no pluginGroups added, you can add it by including the text below to your settings.xml file
 
 ```
 <pluginGroups>
@@ -28,4 +27,4 @@ If maven complains that it can't find the plugin, make sure that you have **org.
 </pluginGroups>
 ```
 
-Alternatively, you can copy the standalone folder to root of the project from which you are running the plugin, it MUST be named **standalone** for the plugin to find it. 
+The **pathToStandalone** argument is optional if the standalone folder is located in the same directory as that from which you are running the plugin, it MUST be named **standalone** for the plugin to find it.

@@ -13,8 +13,9 @@ This plugin can be used to run and stop an instance of the OpenMRS standalone
 
 
 ###Running the plugin
-* Run the command below from the root of your maven project
-* Create a new version of the standalone by building from the code in the [managerplugin](https://github.com/openmrs/openmrs-standalone/tree/managerplugin) branch 
+* Build a new version of the standalone from the code in the [managerplugin](https://github.com/openmrs/openmrs-standalone/tree/managerplugin) branch
+* Extract the generated zip file of the standalone to some location, this is the location(path) you will pass in when running the plugin
+* Run the command below from the root of your maven project 
   
   ```
   mvn manager:run -DpathToStandalone=/myPathToTheStandalone

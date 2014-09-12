@@ -14,6 +14,7 @@
 package org.openmrs.maven.plugins;
 
 import java.io.BufferedReader;
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -88,6 +89,9 @@ public class ManagerMojo extends AbstractMojo {
 		catch (Exception e) {
 			throw new Exception("An error occurred while starting the standalone:" + e.getMessage());
 		}
+		finally {
+			close(normalStream, errorStream);
+		}
 	}
 	
 	private void stop() throws Exception {
@@ -133,17 +137,20 @@ public class ManagerMojo extends AbstractMojo {
 			throw new Exception("An error occurred while shutting down the standalone:" + e.getMessage());
 		}
 		finally {
-			try {
-				if (normalStream != null) {
-					normalStream.close();
-				}
-				if (errorStream != null) {
-					errorStream.close();
+			close(normalStream, errorStream);
+		}
+	}
+	
+	private void close(Closeable... closeables) throws Exception {
+		try {
+			for (Closeable c : closeables) {
+				if (c != null) {
+					c.close();
 				}
 			}
-			catch (IOException e) {
-				throw new Exception("An error occurred while closing input streams:" + e.getMessage());
-			}
+		}
+		catch (IOException e) {
+			throw new Exception("An error occurred while closing input streams:" + e.getMessage());
 		}
 	}
 }

@@ -29,4 +29,4 @@ If maven complains that it can't find the plugin, make sure that you have an ent
 </pluginGroups>
 ```
 
-The **pathToStandalone** argument is optional if the standalone folder is located in the same directory as that from which you are running the plugin, it MUST be named **standalone** for the plugin to find it.
+The **pathToStandalone** argument is optional if the standalone folder is located in the same directory as that from which you are running the plugin, but in this case it MUST be named **standalone** for the plugin to auto find it.
